@@ -10,3 +10,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+<<<<<<< HEAD
+=======
+.env
+>>>>>>> 75f080356b410973bab516bc8069031cee1cae2d
