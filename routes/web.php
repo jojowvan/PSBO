@@ -34,5 +34,13 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::prefix('admin')->group(function(){
         Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
         Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+        Route::get('/addScholarship', 'ScholarshipController@create')->name('addScholarship.create');
+        Route::post('/addScholarship', 'ScholarshipController@store')->name('addScholarship.store');
+        Route::get('/student', 'StudentController@read')->name('student');
+        Route::get('/scholarship', 'ScholarshipController@read')->name('scholarship.read');
+        Route::get('/{editScholarship}/editScholarship', 'ScholarshipController@edit')->name('editScholarship.edit');
+        Route::patch('/{updateScholarship}/editScholarship', 'ScholarshipController@update')->name('editScholarship.update');
+        Route::delete('/{deleteScholarship}/editScholarship', 'ScholarshipController@destroy')->name('editScholarship.destroy');
         Route::get('/', 'AdminController@index')->name('admin.dashboard');
+
     });
