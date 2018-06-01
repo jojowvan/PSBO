@@ -11,11 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(AdminSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(ScholarshipSeeder::class);
+        // $this->call(AdminSeeder::class);
         // $this->call(UsersTableSeeder::class);
-        DB::table('admins')->insert([
-            'name' => 'Admins',
-            'email' => 'admins@gmail.com',
-            'password' => app('hash')->make('adminadmins'),
-        ]);
     }
 }
