@@ -52,7 +52,7 @@
                           <td>{{ $no }}</td>
                           <td>{{ $read->name }}</td>
                           <td>{{ $read->firm }}</td>
-                          <td>{{ $read->description }}</td>
+                          <td>{!! $read->description !!}</td>
                           <td>
                               <a class="btn btn-success btn-sm" href="{{ route('editScholarship.edit', $read->id) }}">Edit</a>
 

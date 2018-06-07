@@ -50,6 +50,6 @@
         </div>
       </div>
         @include('templates.adminPartials.script')
-    
+        @yield('script')
   </body>
 </html>

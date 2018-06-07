@@ -71,7 +71,7 @@
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <textarea id="textarea" required="required" name="description" class="form-control col-md-7 col-xs-12"></textarea>
+                      <textarea id="konten" required="required" name="description" class="form-control col-md-7 col-xs-12"></textarea>
                     </div>
                   </div>
 
@@ -87,3 +87,9 @@
     </div>
 
     @endsection
+
+@section('script')
+  <script>
+    CKEDITOR.replace( 'konten' );
+  </script>
+@endsection

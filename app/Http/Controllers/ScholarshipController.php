@@ -28,6 +28,12 @@ class ScholarshipController extends Controller
         return view('/addScholarship');
     }
 
+    public function test() 
+    {
+        return view('/test');
+    }
+
+
     public function store(Request $request)
     {
         // $scholarships = new scholarship;
