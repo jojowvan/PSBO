@@ -29,30 +29,27 @@
 
             @include('templates.adminPartials.sidebar')
 
-            <!-- /menu footer buttons -->
-            
-            <!-- /menu footer buttons -->
           </div>
         </div>
 
             <!-- top navigation -->
             @include('templates.adminPartials.nav')
 
-            <!-- page content -->
             <div class="right_col" role="main">
-                <!-- top tiles -->
-                  <div class="row tile_count">
-
-                    @yield('content')
-                        
+              <div class="">
+                <div class="page-title">
+                  <div class="title_left">
+                    <h3>@yield('title')</h3>
                 </div>
-                    <!-- /top tiles -->
+                </div>
+                @yield('content')
+              </div>
             </div>
-            <!-- /page content -->
 
           @include('templates.adminPartials.footer')
-
+        </div>
+      </div>
         @include('templates.adminPartials.script')
-
+    
   </body>
 </html>

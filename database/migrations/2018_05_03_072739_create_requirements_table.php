@@ -17,7 +17,7 @@ class CreateRequirementsTable extends Migration
             $table->increments('id');
             $table->integer('scholarship_id')->unsigned();
             $table->float('gda');
-            $table->integer('semester');
+            $table->string('semester');
             $table->date('deadline');
             $table->string('faculty');
             $table->string('program');
