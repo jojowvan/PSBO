@@ -42,5 +42,6 @@ Route::get('/home', 'HomeController@index')->name('home');
         Route::patch('/{updateScholarship}/editScholarship', 'ScholarshipController@update')->name('editScholarship.update');
         Route::delete('/{deleteScholarship}/editScholarship', 'ScholarshipController@destroy')->name('editScholarship.destroy');
         Route::get('/', 'AdminController@index')->name('admin.dashboard');
-        Route::get('/test/{type}', 'ScholarshipController@test')->name('scholar.test');
+        Route::get('/test', 'adminController@editPhoto')->name('admin.editPhoto');
+        Route::post('/test', 'adminController@updatePhoto')->name('admin.updatePhoto');
     });

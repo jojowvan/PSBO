@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Admin;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -21,7 +23,26 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+    public function editPhoto()
+    {
+        $users = Auth::user();
+        return view('test', compact('users'));
+    }
+
+    public function updatePhoto(Request $request)
+    {
+        // dd($request->file('avatar'));
+        $users = Auth::user();
+        $avatar = $request->file('avatar')->store('avatar');
+        $request->user()->update([
+            'avatar'    => $avatar
+        ]);
+
+        return redirect()->back();
+    }
+    
+     public function index()
     {
         return view('admin');
     }
