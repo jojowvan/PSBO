@@ -13,10 +13,10 @@
         <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
           <thead>
             <tr>
-              <th>No.</th>
+              <th style="width: 1%" >No.</th>
               <th>Nama Beasiswa</th>
               <th>Perusahaan</th>
-              <th>Action</th>
+              <th style="width: 20%">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -28,12 +28,9 @@
               <td>{{ $read->name }}</td>
               <td>{{ $read->firm }}</td>
               <td>
-                  <a class="btn btn-success btn-sm" href="{{ route('editScholarship.edit', $read->id) }}">Edit</a>
-                  <form class="" action="{{ route('editScholarship.destroy', $read->id) }}" method="post">
-                  {{ csrf_field() }}
-                  {{ method_field('DELETE') }}
-                  <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                  </form>
+                  <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> View </a>
+                  <a href="{{ route('editScholarship.edit', $read->id) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                  <a "{{ route('editScholarship.destroy', $read->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
               </td>
             </tr>
             @endforeach
@@ -43,7 +40,7 @@
     </div>
   </div>
 
-
+ 
 
 
 

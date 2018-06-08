@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\scholarship;
 use App\requirement;
+use Alert;
 use Illuminate\Support\Facades\DB;
 use Session, Redirect;
 use View;
@@ -28,8 +29,32 @@ class ScholarshipController extends Controller
         return view('/addScholarship');
     }
 
-    public function test() 
+    public function test($type) 
     {
+        switch ($type) {
+            case 'message':
+                alert()->message('Sweet Alert with message.');
+                break;
+            case 'basic':
+                alert()->basic('Sweet Alert with basic.','Basic');
+                break;
+            case 'info':
+                alert()->info('Sweet Alert with info.');
+                break;
+            case 'success':
+                alert()->success('Sweet Alert with success.','Welcome to ItSolutionStuff.com')->autoclose(3500);
+                break;
+            case 'error':
+                alert()->error('Sweet Alert with error.');
+                break;
+            case 'warning':
+                alert()->warning('Sweet Alert with warning.');
+                break;
+            default:
+                # code...
+                break;
+        }
+
         return view('/test');
     }
 
@@ -81,11 +106,13 @@ class ScholarshipController extends Controller
         return redirect()->route('scholarship.read');
     }
 
-    public function edit(scholarship $editScholarship)
+    public function edit($id)
     {
         //$editScholarship = scholarship::find($id);
-
-        return view('/editScholarship', compact('editScholarship'));
+        $requirements   = requirement::where('scholarship_id',$id)->first();
+        $array_require = json_decode(json_encode($requirements), True);
+        $scholarships   = scholarship::find($id);
+        return view('/editScholarship', compact('scholarships', 'requirements'));
 
     }
 
