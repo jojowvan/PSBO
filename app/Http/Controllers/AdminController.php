@@ -24,6 +24,11 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     
+    public function profile()
+    {
+        return view('admin.profile');
+    }
+
     public function editPhoto()
     {
         $users = Auth::user();

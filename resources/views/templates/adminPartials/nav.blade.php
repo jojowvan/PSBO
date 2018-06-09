@@ -10,11 +10,13 @@
 
                         <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('assets/img/admin.png') }}" alt="">{{ Auth::user()->name }} 
+                                    <img src="/storage/{{Auth::user()->avatar}}" alt="" id="crop-avatar" >{{ Auth::user()->name }}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="javascript:;"> Profile</a></li>
+                                <li><a href="{{ route('admin.profile')}}"> Profile</a></li>
+                                
+                                {{--  <li><a href="{{ route('scholarship.read') }}">Daftar Beasiswa</a></li>  --}}
                                 <li><a onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"> {{ __('Logout') }}</a></li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
