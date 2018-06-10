@@ -8,11 +8,20 @@
             </div>
             <div class="x_content">
             <br />
-            <form class="form-horizontal form-label-left" action="{{ route('addScholarship.store') }}" method="post">
+            <form class="form-horizontal form-label-left" action="{{ route('editScholarship.update', $scholarships->id) }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    {{ method_field('PATCH') }}
-                                    
-                    
+                    {{ method_field('PATCH') }} 
+                      
+                   
+                    <div class="form-group">
+                        
+                        <label class="control-label col-md-2">Poster Beasiswa
+                        </label>
+                        <div class="col-md-4">
+                          <img src="/storage/{{$scholarships->image}}" alt="" style="width:200px;height:250px;">
+                          <input type="file" class="form-control" name="image" value="{{$scholarships->image}}" >
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2">Nama Beasiswa
@@ -66,7 +75,7 @@
                       <span class="required">*</span>
                     </label>
                     <div class="col-md-9">
-                    <input type="date" class="form-control" value="{{ $requirements->deadline }}">
+                    <input type="date" class="form-control" value="{{ $requirements->deadline }}" name="deadline">
                     </div>
                   </div>
                     

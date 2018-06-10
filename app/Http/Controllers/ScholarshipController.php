@@ -9,6 +9,7 @@ use Alert;
 use Illuminate\Support\Facades\DB;
 use Session, Redirect;
 use View;
+use Storage;
 
 class ScholarshipController extends Controller
 {
@@ -61,19 +62,15 @@ class ScholarshipController extends Controller
 
     public function store(Request $request)
     {
-        // $scholarships = new scholarship;
 
-        // $scholarships->name         = $request->input('name');
-        // $scholarships->firm         = $request->input('firm');
-        // $scholarships->description  = $request->input('description');
-        // $scholarships->applyOnline  = 1;
-        // $books->title = $request->input('title');
+        
 
         scholarship::create([
             'name'          => $request->input('name'),
             'firm'          => $request->input('firm'),
             'description'   => $request->input('description'),
             'applyOnline'   => 1,
+            'image'         => $request->file('image')->store('beasiswa'),
         ]);
         $nama = $request->input('name');
         // dd($nama);
@@ -116,14 +113,34 @@ class ScholarshipController extends Controller
 
     }
 
-    public function update(scholarship $updateScholarship)
+    public function update(Request $request, $id)
     {
         //$updateScholarship = scholarship::find($id);
 
+        $updateScholarship = scholarship::find($id);
+        $updateRequirement = requirement::where('scholarship_id', $id)->first();
+       
+        if($request->file('image') != null){
+            Storage::delete($updateScholarship->image);
+            $image  = $request->file('image')->store('beasiswa');
+        } else{
+            $image  = $updateScholarship->image;
+        }
+
         $updateScholarship->update([
-            'name' => request('name'),
-            'firm' => request('firm'),
-            'description' => request('description')
+            'name'          => $request->input('name'),
+            'firm'          => $request->input('firm'),
+            'description'   => $request->input('description'),
+            'applyOnline'   => 1,
+            'image'         => $image
+        ]);
+
+        $updateRequirement->update([
+            'gda'               => $request->input('gda'),
+            'semester'          => $request->input('semester'),
+            'deadline'          => $request->input('deadline'),
+            'faculty'           => $request->input('faculty'),
+            'program'           => $request->input('program'),
         ]);
 
         

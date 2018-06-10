@@ -17,6 +17,7 @@ class CreateScholarshipsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('firm');
+            $table->string('image')->nullable()->default(null);
             $table->text('description');
             $table->integer('applyOnline');
             $table->timestamps();

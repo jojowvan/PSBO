@@ -8,9 +8,18 @@
             </div>
             <div class="x_content">
             <br />
-            <form class="form-horizontal form-label-left" action="{{ route('addScholarship.store') }}" method="post">
+            <form class="form-horizontal form-label-left" action="{{ route('addScholarship.store') }}" method="post"  enctype="multipart/form-data">
                     {{ csrf_field() }}
                     
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Poster Beasiswa
+                        </label>
+                        <div class="col-md-4">
+                        {{--  <input type="file" class="form-control" name="name" placeholder="Nama Beasiswa" class="form-control col-md-9 col-xs-12">  --}}
+                        <input type="file" class="form-control" name="image" >
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2">Nama Beasiswa
