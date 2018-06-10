@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Session, Redirect;
 use View;
 use Storage;
+use Carbon\Carbon;
 
 class ScholarshipController extends Controller
 {
@@ -160,6 +161,9 @@ class ScholarshipController extends Controller
     public function view($id)
     {
         $scholarships   = scholarship::find($id);
+        
+        // dd($dateIndoFormat);
+        // {{ Carbon\Carbon::parse($quotes->created_at)->format('d-m-Y i') }}
         $requirements   = requirement::where('scholarship_id',$id)->first();
         $array_require = json_decode(json_encode($requirements), True);
         
