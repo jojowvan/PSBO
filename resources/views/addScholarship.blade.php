@@ -12,6 +12,9 @@
                     {{ csrf_field() }}
                     
 
+
+
+
                     <div class="form-group">
                         <label class="control-label col-md-2">Poster Beasiswa
                         </label>
@@ -37,12 +40,30 @@
                         <input type="text" class="form-control" name="firm" placeholder="Nama Perusahaan">
                         </div>
                     </div>
+
+                    {{--  <div class="btn-group" data-toggle="buttons-checkbox">
+                        <button type="button" class="btn btn-primary">Left</button>
+                        <button type="button" class="btn btn-primary">Middle</button>
+                        <button type="button" class="btn btn-primary">Right</button>
+                      </div>  --}}
+
                     <div class="form-group">
                       <label class="control-label col-md-2">Program 
                         <span class="required">*</span>
                       </label>
                       <div class="col-md-9">
-                      <input type="text" class="form-control" name="program" placeholder="D3,S1,S2">
+                          <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="D3" name="d3">
+                              <label class="form-check-label" for="inlineCheckbox1">D3</label>
+                             
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="S1" name="s1">
+                              <label class="form-check-label" for="inlineCheckbox1">S1</label>
+
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="S2" name="s2">
+                              <label class="form-check-label" for="inlineCheckbox1">S2</label>
+
+                              
+                          </div>
                       </div>
                     </div>
                     <div class="form-group">

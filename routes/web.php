@@ -40,6 +40,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/student', 'StudentController@read')->name('student');
     Route::get('/scholarship', 'ScholarshipController@read')->name('scholarship.read');
     Route::get('/{id}/editScholarship', 'ScholarshipController@edit')->name('editScholarship.edit');
+    Route::get('/{id}/scholarshipView', 'ScholarshipController@view')->name('scholarship.view');
     Route::patch('/{id}/editScholarship', 'ScholarshipController@update')->name('editScholarship.update');
     Route::delete('/{deleteScholarship}/editScholarship', 'ScholarshipController@destroy')->name('editScholarship.destroy');
     Route::get('/', 'AdminController@index')->name('admin.dashboard');

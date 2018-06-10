@@ -63,8 +63,11 @@ class ScholarshipController extends Controller
     public function store(Request $request)
     {
 
+        $program    = $request->d3.';'.$request->s1.';'.$request->s2;
+        // dd($program);
+        // $splitProgram = explode(';', $program, 3);
+        // dd($splitProgram[1]);
         
-
         scholarship::create([
             'name'          => $request->input('name'),
             'firm'          => $request->input('firm'),
@@ -88,7 +91,7 @@ class ScholarshipController extends Controller
         $requirements->semester         = $request->input('semester');
         $requirements->deadline         = $request->input('deadline');
         $requirements->faculty          = $request->input('faculty');
-        $requirements->program          = $request->input('program');
+        $requirements->program          = $program;
         $requirements->save();
         // dd($requirements->program); 
         // requirement::create([
@@ -152,6 +155,15 @@ class ScholarshipController extends Controller
         $deleteScholarship->delete();
 
         return redirect()->route('scholarship.read');
+    }
+
+    public function view($id)
+    {
+        $scholarships   = scholarship::find($id);
+        $requirements   = requirement::where('scholarship_id',$id)->first();
+        $array_require = json_decode(json_encode($requirements), True);
+        
+        return view('admin.scholarshipView', compact('scholarships', 'requirements'));
     }
 
     

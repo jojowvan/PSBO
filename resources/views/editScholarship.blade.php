@@ -18,8 +18,8 @@
                         <label class="control-label col-md-2">Poster Beasiswa
                         </label>
                         <div class="col-md-4">
-                          <img src="/storage/{{$scholarships->image}}" alt="" style="width:200px;height:250px;">
-                          <input type="file" class="form-control" name="image" value="{{$scholarships->image}}" >
+                          <img src="{{$scholarships->getImage()}}" alt="" style="width:200px;height:250px;">
+                          <input type="file" class="form-control" name="image" value="{{$scholarships->getImage()}}" >
                         </div>
                     </div>
 
