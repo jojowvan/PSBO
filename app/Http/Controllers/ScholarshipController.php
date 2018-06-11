@@ -107,6 +107,7 @@ class ScholarshipController extends Controller
     public function destroy($id)
     {
         $scholarships   = scholarship::find($id);
+        dd($scholarships);
         $scholarships->requirement->delete();
         $scholarships->delete();
 

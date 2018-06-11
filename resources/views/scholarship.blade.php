@@ -28,9 +28,35 @@
               <td>{{ $read->name }}</td>
               <td>{{ $read->firm }}</td>
               <td>
-                  <a href="{{ route('scholarship.view', $read->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> View </a>
-                  <a href="{{ route('editScholarship.edit', $read->id) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                  <a "{{ route('editScholarship.destroy', $read->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                  <form action="{{ route('editScholarship.destroy', $read->id) }}" method="post">
+                      {{ csrf_field() }}
+                      {{ method_field('DELETE') }} 
+                      <a href="{{ route('scholarship.view', $read->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> View </a>
+                      <a href="{{ route('editScholarship.edit', $read->id) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                      <button type="submit" class="btn btn-danger btn-xs"  onclick="deleteConfirm()"><i class="fa fa-trash-o"></i>Delete</button>
+                  
+                      <script>
+                          function deleteConfirm() {
+                            event.preventDefault(); // prevent form submit
+                            var form = event.target.form; // storing the form
+                              swal({
+                                title: "Are you sure?",
+                                text: "You will not be able to recover this Scholarship!",         type: "warning",   
+                                showCancelButton: true,   
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Yes, delete it!", 
+                                closeOnConfirm: false 
+                            },
+                            function(isConfirm){
+                              if (isConfirm) {
+                                form.submit();          // submitting the form when user press yes
+                              } 
+                            });
+                            }
+                      </script>
+
+                  </form>
+
               </td>
             </tr>
             @endforeach
@@ -40,7 +66,7 @@
     </div>
   </div>
 
- 
+  @include('sweet::alert')
 
 
 

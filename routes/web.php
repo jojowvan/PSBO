@@ -39,12 +39,11 @@ Route::prefix('admin')->group(function(){
     Route::post('/addScholarship', 'ScholarshipController@store')->name('addScholarship.store');
     Route::get('/student', 'StudentController@read')->name('student');
     Route::get('/scholarship', 'ScholarshipController@read')->name('scholarship.read');
-    Route::get('/{id}/editScholarship', 'ScholarshipController@edit')->name('editScholarship.edit');
-    Route::get('/{id}/scholarshipView', 'ScholarshipController@view')->name('scholarship.view');
-    Route::patch('/{id}/editScholarship', 'ScholarshipController@update')->name('editScholarship.update');
-    Route::delete('/{id}/editScholarship', 'ScholarshipController@destroy')->name('editScholarship.destroy');
+    Route::get('/scholarshipView/{id}', 'ScholarshipController@view')->name('scholarship.view');
+    Route::get('/editScholarship/{id}/edit', 'ScholarshipController@edit')->name('editScholarship.edit');
+    Route::patch('/editScholarship/{id}/edit', 'ScholarshipController@update')->name('editScholarship.update');
+    Route::delete('/editScholarship/{id}/delete', 'ScholarshipController@destroy')->name('editScholarship.destroy');
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
-    // Route::get('/test', 'adminController@editPhoto')->name('admin.editPhoto');
     Route::post('/test', 'adminController@updatePhoto')->name('admin.updatePhoto');
     Route::get('/test/{type}', 'scholarshipController@test')->name('admin.test');
 });
