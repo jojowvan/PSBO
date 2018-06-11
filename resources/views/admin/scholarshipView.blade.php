@@ -1,14 +1,14 @@
 @extends('templates.admins.master')
 
-
 @section('content')
-  @if (session()->has('notif'))
-      <div class="row">
-        {{session()->get('notif')}}
-      </div>
-  @endif
-
   <div class="col-md-12 col-sm-12 col-xs-12">
+      @if (session()->has('notif'))
+        <div class="alert alert-success alert-dismissible fade in" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+          </button>
+          <strong> {{session()->get('notif')}} </strong>
+        </div>
+      @endif
     <div class="x_panel">
       {{--  <div class="x_title">  --}}
         <h2>{{$scholarships->name}}</h2>

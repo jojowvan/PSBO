@@ -99,7 +99,7 @@ class ScholarshipController extends Controller
             'program'           => $request->input('program'),
         ]);
 
-        session()->flash('notif', 'succes ya');
+        session()->flash('notif', 'Edit Succesful!');
         
         return redirect()->route('scholarship.view', compact('id'));
     }
