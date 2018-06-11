@@ -27,4 +27,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Method One to Many User->Comments
+     */
+
+    public function userComment()
+    {
+        return $this->hasMany(Comments::class);
+    }
 }

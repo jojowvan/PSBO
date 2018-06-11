@@ -44,6 +44,7 @@ Route::prefix('admin')->group(function(){
     Route::patch('/{id}/editScholarship', 'ScholarshipController@update')->name('editScholarship.update');
     Route::delete('/{id}/editScholarship', 'ScholarshipController@destroy')->name('editScholarship.destroy');
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
-    Route::get('/test', 'adminController@editPhoto')->name('admin.editPhoto');
+    // Route::get('/test', 'adminController@editPhoto')->name('admin.editPhoto');
     Route::post('/test', 'adminController@updatePhoto')->name('admin.updatePhoto');
+    Route::get('/test/{type}', 'scholarshipController@test')->name('admin.test');
 });

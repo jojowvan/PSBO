@@ -2,6 +2,12 @@
 
 
 @section('content')
+  @if (session()->has('notif'))
+      <div class="row">
+        {{session()->get('notif')}}
+      </div>
+  @endif
+
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       {{--  <div class="x_title">  --}}
@@ -70,6 +76,6 @@
 
  
 
-
+  @include('sweet::alert')
 
 @endsection

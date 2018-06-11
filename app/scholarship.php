@@ -26,9 +26,21 @@ class scholarship extends Model
         return $dateIndoFormat;
     }
 
+    /**
+     *  Method One to One Recuirement
+     */
     public function requirement()
     {
         return $this->hasOne(Requirement::class);
+    }
+
+    /**
+     * Method One to Many Scholarship->Comment
+     */
+
+    public function comment()
+    {
+        return $this->hasMany(Comments::class);
     }
 }
 

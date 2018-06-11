@@ -99,8 +99,9 @@ class ScholarshipController extends Controller
             'program'           => $request->input('program'),
         ]);
 
+        session()->flash('notif', 'succes ya');
         
-        return redirect()->route('scholarship.read');
+        return redirect()->route('scholarship.view', compact('id'));
     }
 
     public function destroy($id)
@@ -121,32 +122,33 @@ class ScholarshipController extends Controller
         return view('admin.scholarshipView', compact('scholarships', 'requirements'));
     }
 
-    public function test() 
+    public function test($type) 
     {
-        // switch ($type) {
-        //     case 'message':
-        //         alert()->message('Sweet Alert with message.');
-        //         break;
-        //     case 'basic':
-        //         alert()->basic('Sweet Alert with basic.','Basic');
-        //         break;
-        //     case 'info':
-        //         alert()->info('Sweet Alert with info.');
-        //         break;
-        //     case 'success':
-        //         alert()->success('Sweet Alert with success.','Welcome to ItSolutionStuff.com')->autoclose(3500);
-        //         break;
-        //     case 'error':
-        //         alert()->error('Sweet Alert with error.');
-        //         break;
-        //     case 'warning':
-        //         alert()->warning('Sweet Alert with warning.');
-        //         break;
-        //     default:
-        //         # code...
-        //         break;
-        // }
+        switch ($type) {
+            case 'message':
+                alert()->message('Sweet Alert with message.');
+                break;
+            case 'basic':
+                alert()->basic('Sweet Alert with basic.','Basic');
+                break;
+            case 'info':
+                alert()->info('Sweet Alert with info.');
+                break;
+            case 'success':
+                alert()->success('Sweet Alert with success.','Welcome to ItSolutionStuff.com')->autoclose(3500);
+                break;
+            case 'error':
+                alert()->error('Sweet Alert with error.');
+                break;
+            case 'warning':
+                alert()->warning('Sweet Alert with warning.');
+                break;
+            default:
+                # code...
+                break;
+        }
 
+        // alert()->message('Sweet Alert with message.');
         return view('/test');
     }
     
