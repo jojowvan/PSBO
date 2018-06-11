@@ -42,28 +42,23 @@ class ScholarshipController extends Controller
         // $splitProgram = explode(';', $program, 3);
         // dd($splitProgram[1]);
         
-        scholarship::create([
+        $scholarships   = scholarship::create([
             'name'          => $request->input('name'),
             'firm'          => $request->input('firm'),
             'description'   => $request->input('description'),
             'applyOnline'   => 1,
             'image'         => $request->file('image')->store('beasiswa'),
         ]);
-        $nama = $request->input('name');
-
-        //find scholarship by name
-        $scholarships = scholarship::where('name', $nama)->orderBy('created_at','desc')->first();
         
-        $requirements   = new requirement([
-           'gda'        => $request->input('gda'),
-           'semester'   => $request->input('semester'),
-           'deadline'   => $date,
-           'faculty'    => $request->input('faculty'),
-           'program'    => $program
-        ]);
 
-        // save $requirements with method in scholarship model
-        $scholarships->requirement()->save($requirements);
+        // $scholarships = scholarship::where('name', $nama)->orderBy('created_at','desc')->first();
+        $scholarships->requirement()->create([
+            'gda'        => $request->input('gda'),
+            'semester'   => $request->input('semester'),
+            'deadline'   => $date,
+            'faculty'    => $request->input('faculty'),
+            'program'    => $program
+        ]);
 
         return redirect()->route('scholarship.read');
     }
@@ -78,9 +73,8 @@ class ScholarshipController extends Controller
 
     public function update(Request $request, $id)
     {
-        // find scholarship & requirements by ID
+        // find scholarship
         $updateScholarship = scholarship::find($id);
-        $updateRequirement = $updateScholarship->requirement;
        
         if($request->file('image') != null){
             Storage::delete($updateScholarship->image);
@@ -97,7 +91,7 @@ class ScholarshipController extends Controller
             'image'         => $image
         ]);
 
-        $updateRequirement->update([
+        $updateScholarship->requirement->update([
             'gda'               => $request->input('gda'),
             'semester'          => $request->input('semester'),
             'deadline'          => $request->input('deadline'),
@@ -109,9 +103,11 @@ class ScholarshipController extends Controller
         return redirect()->route('scholarship.read');
     }
 
-    public function destroy(scholarship $deleteScholarship)
+    public function destroy($id)
     {
-        $deleteScholarship->delete();
+        $scholarships   = scholarship::find($id);
+        $scholarships->requirement->delete();
+        $scholarships->delete();
 
         return redirect()->route('scholarship.read');
     }
