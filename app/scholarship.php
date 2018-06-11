@@ -25,5 +25,10 @@ class scholarship extends Model
         $dateIndoFormat = Carbon::parse($date)->format('D, d/m/Y');
         return $dateIndoFormat;
     }
+
+    public function requirement()
+    {
+        return $this->hasOne(Requirement::class);
+    }
 }
 

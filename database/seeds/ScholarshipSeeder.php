@@ -36,13 +36,7 @@ class ScholarshipSeeder extends Seeder
                                 Hari / Tanggal : Senin, 23 April 2017
                                 Pukul : 14.00 WIB',
             'applyOnline'   => '1',
+            'image'         => 'beasiswa/78d607068cd064420401737e12f83bae_XL.jpg'
         ]);
     }
-
-
-    // $table->increments('id');
-    // $table->string('name');
-    // $table->string('firm');
-    // $table->text('description');
-    // $table->integer('applyOnline');
 }

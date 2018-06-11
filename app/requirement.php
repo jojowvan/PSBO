@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class requirement extends Model
 {
-    protected $fillable = ['gda','semester','deadline','faculty', 'program', 'scholarship_id'];
+    protected $fillable = [
+        'gda',
+        'semester',
+        'deadline',
+        'faculty', 
+        'program', 
+        'scholarship_id'
+    ];
 }

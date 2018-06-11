@@ -94,10 +94,24 @@
                       <span class="required">*</span>
                     </label>
                     <div class="col-md-9">
-                    <input type="date" class="form-control" name="deadline">
+                    <input type="text" class="form-control datepicker" name="deadline" id="date">
                     </div>
+                    <script>
+                      $('#date').datepicker({
+                        startDate: new Date(),
+                        format: 'dd-mm-yyyy',
+                        todayHighlight:'TRUE',
+                        autoclose: true
+                      });    
+                    </script>
                   </div>
-                    
+
+
+                  
+
+                  {{--  {!! Form::text('date', '', array('id' => 'datepicker')) !!}  --}}
+
+                      
                   <div class="item form-group">
                     <label class="control-label col-md-2" for="textarea">Deskripsi <span class="required">*</span>
                     </label>
@@ -113,7 +127,9 @@
                         <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                     </div>
-                    </form>               
+
+                    
+                    </form>       
         </div>
     </div>
 
@@ -123,4 +139,5 @@
   <script>
     CKEDITOR.replace( 'konten' );
   </script>
+  
 @endsection
