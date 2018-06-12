@@ -54,6 +54,7 @@ class ScholarshipController extends Controller
             'description'   => $request->input('description'),
             'applyOnline'   => 1,
             'image'         => $image,
+            'admin_id'      => Auth::user()->id,
         ]);
         
 

@@ -33,6 +33,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->group(function(){
     Route::get('/profile', 'AdminController@profile')->name('admin.profile');
+    Route::patch('/profile', 'AdminController@update')->name('admin.update'); 
+    Route::post('/profile', 'AdminController@changePassword')->name('admin.password'); 
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/addScholarship', 'ScholarshipController@create')->name('addScholarship.create');

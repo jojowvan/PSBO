@@ -17,6 +17,8 @@ class AdminSeeder extends Seeder
             'name'      => 'Jovano Akbarudin',
             'email'     => 'admin@admin.com',
             'password'  => Hash::make('admins'),
+            'jobPosition'=> 'Kemahasiswaan',
+            'address'   => 'Cibinong, Bogor',
             'avatar'    => 'avatar/admins/0J5bt0fMpbQ9hXVYCcz9X1HS8VnPfBsRaAuuYybj.jpeg',
             'remember_token' => str_random(10),
         ]);

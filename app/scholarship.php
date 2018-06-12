@@ -6,7 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class scholarship extends Model
 {
-    protected $fillable = ['name','firm','description','applyOnline', 'image', 'created_at'];
+    protected $fillable = [
+        'admin_id',
+        'name',
+        'firm',
+        'description',
+        'applyOnline', 
+        'image', 
+        'created_at',
+        // 'updated_ad',
+    ];
 
     public function getImage()
     {
