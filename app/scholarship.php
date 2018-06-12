@@ -22,8 +22,28 @@ class scholarship extends Model
             return null;
         }
         $date           = $this->created_at;
-        $dateIndoFormat = Carbon::parse($date)->format('D, d/m/Y');
+        $dateIndoFormat = Carbon::parse($date)->format('l, d/m/Y');
         return $dateIndoFormat;
+    }
+
+    public function getDay()
+    {
+        if(!$this->created_at){
+            return null;
+        }
+        $date   = $this->created_at;
+        $day    = Carbon::parse($date)->format('d');
+        return $day;
+    }
+
+    public function getMonth()
+    {
+        if(!$this->created_at){
+            return null;
+        }
+        $date   = $this->created_at;
+        $month    = Carbon::parse($date)->format('F');
+        return $month;
     }
 
     /**
@@ -41,6 +61,11 @@ class scholarship extends Model
     public function comment()
     {
         return $this->hasMany(Comments::class);
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
     }
 }
 

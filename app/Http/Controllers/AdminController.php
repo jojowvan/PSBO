@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Admin;
+use App\Scholarship;
 use Auth;
 
 class AdminController extends Controller
@@ -26,7 +27,10 @@ class AdminController extends Controller
     
     public function profile()
     {
-        return view('admin.profile');
+        $id             = Auth::user()->id;
+        $admins         = Admin::find($id);
+        $scholarships   = $admins->scholarship()->get();
+        return view('admin.profile', compact('scholarships'));
     }
 
     public function editPhoto()
@@ -49,6 +53,11 @@ class AdminController extends Controller
     
      public function index()
     {
-        return view('admin');
+        $id             = Auth::user()->id;
+        $admins         = Admin::find($id);
+        $scholarships   = $admins->scholarship()->orderBy('created_at','desc')->get();
+
+
+        return view('admin', compact('scholarships'));
     }
 }

@@ -15,12 +15,15 @@ class CreateScholarshipsTable extends Migration
     {
         Schema::create('scholarships', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('admin_id')->unsigned();
             $table->string('name');
             $table->string('firm');
             $table->string('image')->nullable()->default(null);
             $table->text('description');
             $table->integer('applyOnline');
             $table->timestamps();
+
+            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('CASCADE');
         });
     }
 

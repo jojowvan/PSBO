@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class requirement extends Model
 {
     protected $fillable = [
@@ -14,4 +15,9 @@ class requirement extends Model
         'program', 
         'scholarship_id'
     ];
+
+    public function scholarship()
+    {
+        $this->belongsTo(scholarship::class);
+    }
 }

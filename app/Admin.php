@@ -28,4 +28,9 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function scholarship()
+    {
+        return $this->hasMany(scholarship::Class);
+    }
 }

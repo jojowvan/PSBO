@@ -29,7 +29,7 @@
                           <span class="required">*</span>
                         </label>
                         <div class="col-md-9">
-                        <input type="text" class="form-control" name="name" placeholder="Nama Beasiswa" class="form-control col-md-9 col-xs-12">
+                        <input type="text" class="form-control" required="required" name="name" placeholder="Nama Beasiswa" class="form-control col-md-9 col-xs-12">
                         </div>
                     </div>
                     <div class="form-group">
@@ -37,15 +37,10 @@
                           <span class="required">*</span>
                         </label>
                         <div class="col-md-9">
-                        <input type="text" class="form-control" name="firm" placeholder="Nama Perusahaan">
+                        <input type="text" class="form-control" name="firm" placeholder="Nama Perusahaan" required="required">
                         </div>
                     </div>
 
-                    {{--  <div class="btn-group" data-toggle="buttons-checkbox">
-                        <button type="button" class="btn btn-primary">Left</button>
-                        <button type="button" class="btn btn-primary">Middle</button>
-                        <button type="button" class="btn btn-primary">Right</button>
-                      </div>  --}}
 
                     <div class="form-group">
                       <label class="control-label col-md-2">Program 
@@ -71,21 +66,21 @@
                         <span class="required">*</span>
                       </label>
                       <div class="col-md-9">
-                      <input type="text" class="form-control" name="semester" placeholder="1-2">
+                      <input type="text" class="form-control" name="semester" placeholder="1-2" required="required">
                       </div>
                    </div>
         
                   <div class="form-group">
                     <label class="control-label col-md-2">Fakultas </label>
                     <div class="col-md-9">
-                    <input type="text" class="form-control" name="faculty" placeholder="FMIPA, FATETA">
+                    <input type="text" class="form-control" name="faculty" placeholder="FMIPA, FATETA" required="required">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label class="control-label col-md-2">Minimum IPK</label>
                     <div class="col-md-9">
-                    <input type="text" class="form-control" name="gda" placeholder="2.7">
+                    <input type="text" class="form-control" name="gda" placeholder="2.7" required="required">
                     </div>
                   </div>
 
@@ -94,7 +89,7 @@
                       <span class="required">*</span>
                     </label>
                     <div class="col-md-9">
-                    <input type="text" class="form-control datepicker" name="deadline" id="date">
+                    <input type="text" class="form-control datepicker" name="deadline" id="date" required="required">
                     </div>
                     <script>
                       $('#date').datepicker({
@@ -116,7 +111,7 @@
                     <label class="control-label col-md-2" for="textarea">Deskripsi <span class="required">*</span>
                     </label>
                     <div class="col-md-9">
-                      <textarea id="konten" required="required" name="description" class="form-control col-md-9 col-xs-12"></textarea>
+                      <textarea id="konten" required="required" name="description" class="form-control col-md-9 col-xs-12" required="required"></textarea>
                     </div>
                   </div>
 

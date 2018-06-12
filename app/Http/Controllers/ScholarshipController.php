@@ -41,13 +41,19 @@ class ScholarshipController extends Controller
         // dd($program);
         // $splitProgram = explode(';', $program, 3);
         // dd($splitProgram[1]);
+
+        if($request->file('image') != null){
+            $image  = $request->file('image')->store('beasiswa');
+        } else{
+            $image  = null;
+        }
         
         $scholarships   = scholarship::create([
             'name'          => $request->input('name'),
             'firm'          => $request->input('firm'),
             'description'   => $request->input('description'),
             'applyOnline'   => 1,
-            'image'         => $request->file('image')->store('beasiswa'),
+            'image'         => $image,
         ]);
         
 
@@ -107,10 +113,9 @@ class ScholarshipController extends Controller
     public function destroy($id)
     {
         $scholarships   = scholarship::find($id);
-        dd($scholarships);
         $scholarships->requirement->delete();
         $scholarships->delete();
-
+        session()->flash('deleteNotif', 'Delete Succesful!');
         return redirect()->route('scholarship.read');
     }
 
