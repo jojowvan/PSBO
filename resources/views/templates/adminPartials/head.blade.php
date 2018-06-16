@@ -8,6 +8,10 @@
 
     <title> {{ config('app.name', 'Info Beasiswa IPB') }} </title> 
 
+    @yield('stylesheets')
+
+    
+
     <!-- Bootstrap -->
     <link href= "{{ asset('assets/admin/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -31,7 +35,7 @@
     <!-- bootstrap-wysiwyg -->
     <link href="{{ asset('assets/admin/vendors/google-code-prettify/bin/prettify.min.css') }}" rel="stylesheet">
     <!-- Select2 -->
-    <link href="{{ asset('assets/admin/vendors/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet">
     <!-- Switchery -->
     <link href="{{ asset('assets/admin/vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
     <!-- starrr -->

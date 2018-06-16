@@ -1,5 +1,11 @@
 @extends('templates.admins.master')
 
+@section('stylesheets')
+
+  <link href= "{{ asset('css/parsley.css') }}" rel="stylesheet">
+  <link href= "{{ asset('css/select2.min.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
     <div class="x_panel">
         <div class="x_title">
@@ -11,10 +17,6 @@
             <form class="form-horizontal form-label-left" action="{{ route('addScholarship.store') }}" method="post"  enctype="multipart/form-data">
                     {{ csrf_field() }}
                     
-
-
-
-
                     <div class="form-group">
                         <label class="control-label col-md-2">Poster Beasiswa
                         </label>
@@ -100,12 +102,25 @@
                       });    
                     </script>
                   </div>
-
-
                   
 
-                  {{--  {!! Form::text('date', '', array('id' => 'datepicker')) !!}  --}}
 
+                    <div class="control-group">
+                      <label class="control-label col-md-2">Select Tags</label>
+                      <div class="col-md-9">
+                        <select class="tags form-control select2-multi" tabindex="-1" multiple="multiple" name="tags[]">
+                          @foreach ($tags as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                          @endforeach 
+                        </select>
+                        <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                      </div>
+                    </div>
+                  {{--  </div>  --}}
+                  
+
+                  
+                  <div class="form-group">
                       
                   <div class="item form-group">
                     <label class="control-label col-md-2" for="textarea">Deskripsi <span class="required">*</span>
@@ -114,8 +129,7 @@
                       <textarea id="konten" required="required" name="description" class="form-control col-md-9 col-xs-12" required="required"></textarea>
                     </div>
                   </div>
-
-                  
+                 </div>
               
                     <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
@@ -131,8 +145,12 @@
     @endsection
 
 @section('script')
+  <script src="{{ asset('js/select2.min.js') }}"></script>
+  <script src="{{ asset('js/parsley.min.js') }}"></script>
   <script>
     CKEDITOR.replace( 'konten' );
   </script>
-  
+	<script type="text/javascript">
+		$('.select2-multi').select2();
+	</script>
 @endsection

@@ -76,5 +76,10 @@ class scholarship extends Model
     {
         return $this->belongsTo(Admin::class);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }
 

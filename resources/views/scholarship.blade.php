@@ -1,6 +1,5 @@
 @extends('templates.admins.master')
 
-
 @section('content')
   <div class="col-md-12 col-sm-12 col-xs-12">
       @if (session()->has('deleteNotif'))
@@ -8,6 +7,13 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
         </button>
         <strong> {{session()->get('deleteNotif')}} </strong>
+      </div>
+    @endif
+    @if (session()->has('success'))
+      <div class="alert alert-success alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <strong> {{session()->get('success')}} </strong>
       </div>
     @endif
     <div class="x_panel">
