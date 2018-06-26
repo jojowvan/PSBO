@@ -1,6 +1,5 @@
 @extends('templates.masterl')
 
-<<<<<<< HEAD
 @section('app')
 <header class="masthead" style="background-image: url({!! asset('assets/img/home-bg.jpg') !!})">
     <div class="overlay"></div>
@@ -79,8 +78,3 @@
           </div>
 
 @endsection()
-=======
-@section('content')
-
-@endsection
->>>>>>> 7938e2623dbc585c40a0451e0c1256fd2e254c13

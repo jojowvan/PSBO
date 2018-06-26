@@ -19,23 +19,6 @@
 @endsection()
 
 @section('content')
-<<<<<<< HEAD
-
-          <div class="post-preview">
-            <a href="description">
-              <h2 class="post-title">
-                Man must explore, and this is exploration at its greatest
-              </h2>
-              <h3 class="post-subtitle">
-                Problems look mighty small from 150 miles up
-              </h3>
-            </a>
-            <p class="post-meta">Posted by
-              <a href="#">Start Bootstrap</a>
-              on September 24, 2018</p>
-          </div>
-          <hr>
-=======
          
     @foreach($readScholarship as $scholarship)
           <div class="post-preview">
@@ -52,7 +35,6 @@
           </div>
           <hr>
         @endforeach
->>>>>>> 7938e2623dbc585c40a0451e0c1256fd2e254c13
           <!-- Pager -->
           <div class="clearfix">
             <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
