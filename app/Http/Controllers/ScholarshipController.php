@@ -19,7 +19,7 @@ class ScholarshipController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:admin');
+         $this->middleware('auth:admin');
     }
 
     public function read()
@@ -27,6 +27,7 @@ class ScholarshipController extends Controller
         $readScholarship = scholarship::orderBy('id')->get();
 
         return view('/scholarship', compact('readScholarship'));
+
     }
     public function create() 
     {
