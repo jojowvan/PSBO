@@ -22,13 +22,24 @@ use SebastianBergmann\FileIterator\Facade as FileIteratorFacade;
 abstract class BaseTestRunner
 {
     public const STATUS_UNKNOWN    = -1;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7938e2623dbc585c40a0451e0c1256fd2e254c13
     public const STATUS_PASSED     = 0;
+
     public const STATUS_SKIPPED    = 1;
+
     public const STATUS_INCOMPLETE = 2;
+
     public const STATUS_FAILURE    = 3;
+
     public const STATUS_ERROR      = 4;
+
     public const STATUS_RISKY      = 5;
+
     public const STATUS_WARNING    = 6;
+
     public const SUITE_METHODNAME  = 'suite';
 
     /**
@@ -44,8 +55,6 @@ abstract class BaseTestRunner
      * This is a template method, subclasses override
      * the runFailed() and clearStatus() methods.
      *
-     * @param string       $suiteClassName
-     * @param string       $suiteClassFile
      * @param array|string $suffixes
      *
      * @throws Exception

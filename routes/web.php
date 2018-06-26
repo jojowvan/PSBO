@@ -15,9 +15,9 @@
     //return view('welcome');
 //});
 
-Route::get('/', function () {
-    return view('index');
-});
+
+
+Route::get('/', 'UserController@readScholarship');
 
 Route::get('login', function () {
     return view('login');
@@ -50,6 +50,8 @@ Route::prefix('admin')->group(function(){
     Route::patch('/editScholarship/{id}/edit', 'ScholarshipController@update')->name('editScholarship.update');
     Route::delete('/editScholarship/{id}/delete', 'ScholarshipController@destroy')->name('editScholarship.destroy');
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
-    Route::post('/test', 'adminController@updatePhoto')->name('admin.updatePhoto');
-    Route::get('/test/{type}', 'scholarshipController@test')->name('admin.test');
+    // Route::post('/test', 'adminController@updatePhoto')->name('admin.updatePhoto');
+    Route::get('/test', 'TagController@test')->name('admin.test');
+    Route::get('/testview/{id}', 'TagController@testview')->name('admin.testview');
+    Route::resource('tags', 'TagController', ['except'  => ['create']]);
 });

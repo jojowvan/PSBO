@@ -250,7 +250,11 @@ class ValidationRuleParser
     {
         $rule = strtolower($rule);
 
+<<<<<<< HEAD
         if ($rule === 'regex' || $rule === 'not_regex' || $rule === 'notregex') {
+=======
+        if (in_array($rule, ['regex', 'not_regex', 'notregex'], true)) {
+>>>>>>> 7938e2623dbc585c40a0451e0c1256fd2e254c13
             return [$parameter];
         }
 

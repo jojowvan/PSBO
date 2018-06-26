@@ -19,6 +19,7 @@
 @endsection()
 
 @section('content')
+<<<<<<< HEAD
 
           <div class="post-preview">
             <a href="description">
@@ -34,6 +35,24 @@
               on September 24, 2018</p>
           </div>
           <hr>
+=======
+         
+    @foreach($readScholarship as $scholarship)
+          <div class="post-preview">
+            <a href="post">
+              <h2 class="post-title">
+                {{$scholarship->name}}
+              </h2>
+              <h3 class="post-subtitle">
+              {{$scholarship->firm}}
+              </h3>
+            </a>
+            <p class="post-meta">Posted by
+              {{$scholarship->getDay()}} {{$scholarship->getMonth()}}</p>
+          </div>
+          <hr>
+        @endforeach
+>>>>>>> 7938e2623dbc585c40a0451e0c1256fd2e254c13
           <!-- Pager -->
           <div class="clearfix">
             <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>

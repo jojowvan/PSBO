@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Laravel Sweet Alert Notification</title>
-	<link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
-	<script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"  >
- 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-</head>
-<body>
+@extends('templates.admins.master')
+
+@section('content')
+<div class="tags">
+		<h4><b>Tags:</b></h4>
+		@foreach ($tags as $tag)
+		  <a href="{{ route('admin.testview', $tag->id) }}">{{ $tag->name }}</a>
+		  <br>
+		@endforeach
+	  </div>
 
 
-<h1 class="text-center">Laravel Sweet Alert Notification</h1>
-@include('sweet::alert')
+  
+	
 
-<script>
-    
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-</script>
-</body>
-</html>
+@endsection

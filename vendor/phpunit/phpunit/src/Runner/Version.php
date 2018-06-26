@@ -7,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace PHPUnit\Runner;
 
 use SebastianBergmann\Version as VersionId;
@@ -18,6 +17,7 @@ use SebastianBergmann\Version as VersionId;
 class Version
 {
     private static $pharVersion;
+
     private static $version;
 
     /**
@@ -30,7 +30,11 @@ class Version
         }
 
         if (self::$version === null) {
+<<<<<<< HEAD
             $version       = new VersionId('7.2.4', \dirname(__DIR__, 2));
+=======
+            $version       = new VersionId('7.2.6', \dirname(__DIR__, 2));
+>>>>>>> 7938e2623dbc585c40a0451e0c1256fd2e254c13
             self::$version = $version->getVersion();
         }
 

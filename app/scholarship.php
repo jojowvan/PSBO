@@ -76,11 +76,18 @@ class scholarship extends Model
     {
         return $this->belongsTo(Admin::class);
     }
+<<<<<<< HEAD
     public function read()
     {
         $readScholarship = scholarship::orderBy('id')->get();
 
         return $readScholarship;
+=======
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+>>>>>>> 7938e2623dbc585c40a0451e0c1256fd2e254c13
     }
 }
 

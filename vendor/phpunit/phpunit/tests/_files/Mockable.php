@@ -10,8 +10,14 @@
 class Mockable
 {
     public $constructorArgs;
+<<<<<<< HEAD
     public $cloned;
 
+=======
+
+    public $cloned;
+
+>>>>>>> 7938e2623dbc585c40a0451e0c1256fd2e254c13
     public function __construct($arg1 = null, $arg2 = null)
     {
         $this->constructorArgs = [$arg1, $arg2];

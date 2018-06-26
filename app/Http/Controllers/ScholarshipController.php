@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\scholarship;
 use App\requirement;
+use App\Tag;
 use Alert;
 use Illuminate\Support\Facades\DB;
 use Session, Redirect;
 use View;
 use Storage;
+use Auth;
 use Carbon\Carbon;
 
 class ScholarshipController extends Controller
@@ -17,7 +19,7 @@ class ScholarshipController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:admin');
+         $this->middleware('auth:admin');
     }
 
     public function read()
@@ -25,15 +27,18 @@ class ScholarshipController extends Controller
         $readScholarship = scholarship::orderBy('id')->get();
 
         return view('/scholarship', compact('readScholarship'));
+
     }
     public function create() 
     {
-        return view('/addScholarship');
+        $tags   = tag::all();
+        return view('/addScholarship', compact('tags'));
     }
 
     public function store(Request $request)
     {
         // change format dd-mm-yyyy to yyyy-mm-dd
+    
         $tanggal    = $request->deadline;
         $date       = date("Y-m-d", strtotime($tanggal));
        
@@ -56,9 +61,7 @@ class ScholarshipController extends Controller
             'image'         => $image,
             'admin_id'      => Auth::user()->id,
         ]);
-        
 
-        // $scholarships = scholarship::where('name', $nama)->orderBy('created_at','desc')->first();
         $scholarships->requirement()->create([
             'gda'        => $request->input('gda'),
             'semester'   => $request->input('semester'),
@@ -66,7 +69,18 @@ class ScholarshipController extends Controller
             'faculty'    => $request->input('faculty'),
             'program'    => $program
         ]);
+        
+        $scholarships->tags()->sync($request->tags, false);
+        
+        // if(isset($request->tags)){
+        //     $scholarships->tags()->sync($request->tags);
+        // }else{
+        //     $scholarships->tags()->sync(array());
+        // }
 
+        // $scholarships = scholarship::where('name', $nama)->orderBy('created_at','desc')->first();
+        
+        session()->flash('success', 'Scholarship succesful added!');
         return redirect()->route('scholarship.read');
     }
 
@@ -74,7 +88,9 @@ class ScholarshipController extends Controller
     {
         $scholarships   = scholarship::find($id);
         $requirements   = $scholarships->requirement;
-        return view('/editScholarship', compact('scholarships', 'requirements'));
+        $tags = Tag::all();
+
+        return view('/editScholarship', compact('scholarships', 'requirements','tags'));
 
     }
 
@@ -106,6 +122,12 @@ class ScholarshipController extends Controller
             'program'           => $request->input('program'),
         ]);
 
+        if (isset($request->tags)) {
+            $updateScholarship->tags()->sync($request->tags);
+        } else {
+            $updateScholarship->tags()->sync(array());
+        }
+
         session()->flash('notif', 'Edit Succesful!');
         
         return redirect()->route('scholarship.view', compact('id'));
@@ -115,6 +137,7 @@ class ScholarshipController extends Controller
     {
         $scholarships   = scholarship::find($id);
         $scholarships->requirement->delete();
+        $scholarships->tags()->detach();
         $scholarships->delete();
         session()->flash('deleteNotif', 'Delete Succesful!');
         return redirect()->route('scholarship.read');
@@ -125,7 +148,7 @@ class ScholarshipController extends Controller
         $scholarships   = scholarship::find($id);
         $requirements   = $scholarships->requirement;
         // $array_require = json_decode(json_encode($requirements), True);
-        
+        // dd($scholarships->tags());
         return view('admin.scholarshipView', compact('scholarships', 'requirements'));
     }
 

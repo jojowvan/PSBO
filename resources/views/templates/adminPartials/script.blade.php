@@ -63,7 +63,8 @@
     <!-- Switchery -->
     <script src="{{ asset('assets/admin/vendors/switchery/dist/switchery.min.js') }}"></script>
     <!-- Select2 -->
-    <script src="{{ asset('assets/admin/vendors/select2/dist/js/select2.full.min.js') }}"></script>
+    {{--  <script src="{{ asset('assets/admin/vendors/select2/dist/js/select2.full.min.js') }}"></script>  --}}
+    <script src="{{ asset('assets/js/select2.full.min.js') }}"></script>
     <!-- Parsley -->
     <script src="{{ asset('assets/admin/vendors/parsleyjs/dist/parsley.min.js') }}"></script>
     <!-- Autosize -->
